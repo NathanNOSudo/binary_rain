@@ -34,3 +34,8 @@ Once you have lolcat installed you can pipe it by running:
 
 ### Piped with lolcat
 <img src="https://user-images.githubusercontent.com/49554888/232626583-9740bdfa-9d48-41bd-9ff0-9f37d94300d3.mov">
+
+
+## matrix_name.sh
+
+SImilar to matrix_rain except uses your name or whatever word you use for the variable in the script.
