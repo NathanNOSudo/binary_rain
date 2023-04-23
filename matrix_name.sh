@@ -10,14 +10,20 @@ random() {
 
 # Function to reset the terminal
 reset_terminal() {
-  printf "\033[0m\033[?25h\033[H\033[2J"
+  tput sgr0
+  tput cnorm
+  tput clear
+  stty sane
+  exit 0
 }
 
 # Trap to handle Ctrl-C and reset the terminal
 trap reset_terminal INT
 
-# Hide the cursor and clear the screen
-printf "\033[?25l\033[H\033[2J"
+# Save current terminal settings and apply new ones
+stty -echo -icanon
+tput civis
+tput clear
 
 # Rain loop
 while true; do
@@ -26,7 +32,9 @@ while true; do
   y=$(random 1 $(tput lines))
   
   # Set the position and print the name
-  printf "\033[${y};${x}f\033[32mNathan"
+  tput cup $y $x
+  tput setaf 2
+  echo -n "Nathan"
   
   # Sleep for a short interval
   sleep 0.05
